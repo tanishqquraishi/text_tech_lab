@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="corpus" type="corpusType"/>
+  <xs:complexType name="wfType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="lemma" use="optional"/>
+        <xs:attribute type="xs:string" name="pos" use="optional"/>
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="instanceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="lemma" use="optional"/>
+        <xs:attribute type="xs:string" name="pos" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="sentenceType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="wfType" name="wf"/>
+      <xs:element type="instanceType" name="instance"/>
+    </xs:choice>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="textType">
+    <xs:sequence>
+      <xs:element type="sentenceType" name="sentence" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="corpusType">
+    <xs:sequence>
+      <xs:element type="textType" name="text" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="lang"/>
+    <xs:attribute type="xs:string" name="source"/>
+  </xs:complexType>
+</xs:schema>

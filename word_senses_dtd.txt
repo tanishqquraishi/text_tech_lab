@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE corpus [
+        <!ELEMENT corpus (text)*>
+        <!ATTLIST corpus
+                lang CDATA #REQUIRED
+                source CDATA #REQUIRED>
+        <!ELEMENT text (sentence)*>
+        <!ATTLIST text
+                id CDATA #REQUIRED>
+        <!ELEMENT sentence (wf|instance)*>
+        <!ATTLIST sentence
+                id CDATA #REQUIRED>
+        <!ELEMENT wf (#PCDATA)>
+        <!ATTLIST wf
+                lemma CDATA #REQUIRED
+                pos CDATA #REQUIRED>
+        <!ELEMENT instance (#PCDATA)>
+        <!ATTLIST instance
+                id CDATA #REQUIRED
+                lemma CDATA #REQUIRED
+                pos CDATA #REQUIRED>
+        ]>
